@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toggle Switch Test</title>
+<link rel="stylesheet" href="uts.css">
+<style>
+  html { color-scheme: light; background: #fff; }
+  body {
+    background: #fff;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 40px 20px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 24px;
+  }
+
+  .demo-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .demo-row .state {
+    font-size: .9rem;
+    color: #555;
+    min-width: 40px;
+  }
+
+  .color-pick {
+    display: flex;
+    gap: 8px;
+  }
+  .color-pick button {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px #d1d5db;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .side-by-side {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #eee;
+  }
+  .side-by-side .box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .side-by-side .box span {
+    font-size: .8rem;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+
+<h1>Toggle Switch Test</h1>
+
+<div class="demo-row" id="demo">
+  <label class="toggle-switch">
+    <input type="checkbox" checked>
+    <span class="toggle"></span>
+  </label>
+  <span class="state">ON</span>
+</div>
+
+<div class="color-pick">
+  <button style="background:#2196F3" data-color="#2196F3"></button>
+  <button style="background:#e74c3c" data-color="#e74c3c"></button>
+  <button style="background:#2ecc71" data-color="#2ecc71"></button>
+  <button style="background:#9b59b6" data-color="#9b59b6"></button>
+  <button style="background:#f1c40f" data-color="#f1c40f"></button>
+</div>
+
+<script>
+  const demo = document.getElementById('demo');
+
+  document.querySelector('.color-pick').addEventListener('click', e => {
+    const btn = e.target.closest('button[data-color]');
+    if (!btn) return;
+    demo.style.setProperty('--toggle-color', btn.dataset.color);
+  });
+
+  const input = demo.querySelector('input');
+  const state = demo.querySelector('.state');
+
+  input.addEventListener('change', () => {
+    state.textContent = input.checked ? 'ON' : 'OFF';
+  });
+</script>
+
+</body>
+</html>
