@@ -1,41 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Materia</title>
-  <link rel="stylesheet" href="materia.css">
-</head>
+  <link rel="stylesheet" href="capsule.css">
 
+  <style>
+    form {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      column-gap: 16px;
+      row-gap: 8px;
+      align-items: center;
+    }
+
+    form > row {
+      display: contents;
+    }
+
+    form > row > label,
+    form > row > input,
+    form > row > select {
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    form > row > label {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: end;
+      align-items: center;
+    }
+
+    form > row > input {
+      text-align: left;
+    }
+
+    form > row > input[type="color"] {
+      justify-self: start;
+    }
+
+
+  </style>
+</head>
 <body>
   <main>
     <h2>Form Elements</h2>
-    <form>
-      <label>Text<input type="text" id="text" placeholder="Text"></label>
-      <label>Select <select id="select" required><option value="" selected>Option 1</option><option>Option 2</option></select></label>
-      <label>Date<input type="date" id="date"></label>
-      <label>Time<input type="time" id="time"></label>
-      <label>File<input type="file" id="file"></label>
-      <label>Disabled<input type="text" id="disabled" placeholder="Disabled" disabled></label>
-      <label>Readonly<input type="text" id="readonly" placeholder="Readonly" readonly></label>
-      <label>Range Slider<input type="range" min="0" max="100" value="50" id="range"></label>
-      <label>Color Picker<input type="color" id="color" value="#0eaaaa"></label>
-      <label>Checkbox-1<input type="checkbox" id="checkbox-1" checked> </label>
-      <label>Checkbox-2<input type="checkbox" id="checkbox-2" checked> </label>
-      <label>Radio-1<input type="radio" name="radio" value="radio-1" checked> </label>
-      <label><input type="radio" name="radio" value="radio-2"> </label>
-      <label>Switch<input type="checkbox" id="switch-1" role="switch" checked></label>
-      <input type="reset" value="Reset" onclick="event.preventDefault()">
-      <input type="submit" value="Submit" onclick="event.preventDefault()">
+    <form class="pure-form pure-form-aligned">
+      <row><label>Text</label><input type="text" id="text" placeholder="Text"></row>
+      <row><label>Select</label><select id="select" required><option value="" selected>Option 1</option><option>Option 2</option></select></row>
+      <row><label>Date</label><input type="date" id="date"></row>
+      <row><label>Time</label><input type="time" id="time"></row>
+      <row><label>File</label><input type="file" id="file"></row>
+      <row><label>Disabled</label><input type="text" id="disabled" placeholder="Disabled" disabled></row>
+      <row><label>Readonly</label><input type="text" id="readonly" placeholder="Readonly" readonly></row>
+      <row><label>Range Slider</label><input type="range" min="0" max="100" value="50" id="range"></row>
+      <row><label>Color Picker</label><input type="color" id="color" value="#0eaaaa"></row>
+      <row>
+        <label>Gender</label>
+        <fieldset> 
+          <label><input type="radio" name="size" value="s">Male</label>
+          <label><input type="radio" name="size" value="m" checked>Female</label>
+        </fieldset>
+      </row>
+      <row>
+        <label>Hobbit</label>
+        <fieldset> 
+          <label><input type="checkbox" name="size" value="a">Art</label>
+          <label><input type="checkbox" name="size" value="c" checked>Code</label>
+        </fieldset>
+      </row>
+      <row><label>Switch</label><input type="checkbox" id="switch-1" role="switch" checked></row>
+      <row><label></label><input type="reset" value="Default"></row>
+      <row><label></label><input type="submit" value="Submit"></row>
     </form>
-    <progress id="progress-1" value="25" max="100"></progress>
-    <progress id="progress-2"></progress>
   </main>
-
-  <footer>
-    <small>Built with <a href="https://picocss.com">Pico</a></small>
-  </footer>
 </body>
-
 </html>

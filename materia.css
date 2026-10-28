@@ -31,58 +31,11 @@ textarea {
     color: inherit;
 }
 
-form {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    column-gap: 8px;
-    row-gap: 4px;
-    align-items: center;
-}
-
-form > label {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    align-items: center;
-    column-gap: 8px;
-    min-height: 30px;
-}
-
-form > label > input,
-form > label > select {
-    grid-column: 2;
-    min-width: 0;
-    height: 30px;
-    margin: 0;
-    padding: 2px;
-    box-sizing: border-box;
-    vertical-align: middle;
-}
-
-form > label > input[type="checkbox"],
-form > label > input[type="radio"] {
-    justify-self: start;
-    align-self: center;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-}
-
-form > label > input[type="color"] {
-    justify-self: start;
-}
-
-form > p,
-form > input[type="submit"],
-form > input[type="reset"],
-form > progress {
-    grid-column: 1 / -1;
-}
-
-div {
-    align-items: center;
-    margin: 2px 0;
-    z-index: 1;
+fieldset {
+  border: 0;      /* ← 线框在这里被去掉 */
+  padding: 0;
+  margin: 0;
+  min-inline-size: 0;
 }
 
 input:not([type="checkbox"], [type="radio"]) {
@@ -180,6 +133,7 @@ select:not([multiple], [size]) {
     background-repeat: no-repeat;
     appearance: none;
     -webkit-appearance: none;
+    box-sizing: border-box;
 }
 
 button {
@@ -192,13 +146,33 @@ button {
     margin: 4px 0;
 }
 
+input[type="submit"],
+input[type="reset"] {
+    box-sizing: border-box;
+    width: 100%;
+    border: 0;
+    border-bottom: 0;
+    background: var(--mc);
+    color: #fff;
+    line-height: 2.4rem;
+    font-size: 1.2rem;
+    padding: 0 6px;
+    margin: 4px 0;
+    cursor: pointer;
+}
+
+input[type="submit"]:focus-visible,
+input[type="reset"]:focus-visible {
+    outline: 2px solid var(--mc);
+    outline-offset: 2px;
+}
+
 input[type="checkbox"][role="switch"] {
     appearance: none;
     -webkit-appearance: none;
     position: relative;
     display: inline-block;
     vertical-align: middle;
-    flex: none;
     width: 44px;
     height: 24px;
     margin: 0;
@@ -232,64 +206,4 @@ input[type="checkbox"][role="switch"]:checked::before {
 input[type="checkbox"][role="switch"]:focus-visible {
     outline: 2px solid var(--mc);
     outline-offset: 2px;
-}
-
-[role="group"]:has(> label > input[type="checkbox"]) {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-    align-items: stretch;
-    gap: 0;
-    inline-size: 100%;
-    height: 30px;
-    margin: 0;
-    border-radius: 50px;
-    overflow: hidden;
-    background: #ccc;
-    vertical-align: middle;
-}
-
-[role="group"]:has(> label > input[type="checkbox"]) > label {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-inline-size: 0;
-    margin: 0;
-    padding: 0 4px;
-    font-size: 13px;
-    line-height: 1;
-    color: #555;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: pointer;
-}
-
-[role="group"]:has(> label > input[type="checkbox"]) > label > input {
-    display: none;
-}
-
-[role="group"]:has(> label > input[type="checkbox"]) > label:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.5);
-    pointer-events: none;
-}
-
-[role="group"]:has(> label > input[type="checkbox"]) > label:has(> input:checked):not(:has(+ label > input:checked))::after {
-    display: none;
-}
-
-[role="group"]:has(> label > input[type="checkbox"]) > label:has(+ label > input:checked):not(:has(> input:checked))::after {
-    display: none;
-}
-
-[role="group"]:has(> label > input[type="checkbox"]) > label:has(> input:checked) {
-    background: var(--mc);
-    color: #fff;
 }
