@@ -3,10 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Materia</title>
-  <link rel="stylesheet" href="materia.css">
+  <title>Classless Materia</title>
+  <link rel="stylesheet" href="classless.materia.css">
 
   <style>
+    :where(body > :is(header, main, footer)) {
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 16px;
+
+        @media (min-width: 576px)  { width: min(100% - 32px, 540px); }
+        @media (min-width: 768px)  { width: min(100% - 48px, 720px); }
+        @media (min-width: 1024px) { width: min(50%, 2048px); }
+    }
+
     form {
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -15,41 +26,35 @@
       align-items: center;
     }
 
-    form > row {
+    form>row {
       display: contents;
     }
 
-    form > row > label,
-    form > row > input,
-    form > row > select {
+    form>row>label,
+    form>row>input,
+    form>row>select {
       min-width: 0;
       box-sizing: border-box;
     }
 
-    form > row > label {
+    form>row>label {
       display: grid;
       grid-auto-flow: column;
       justify-content: end;
       align-items: center;
     }
-
-    form > row > input {
-      text-align: left;
-    }
-
-    form > row > input[type="color"] {
-      justify-self: start;
-    }
-
-
   </style>
 </head>
+
 <body>
   <main>
     <h2>Form Elements</h2>
     <form class="pure-form pure-form-aligned">
       <row><label>Text</label><input type="text" id="text" placeholder="Text"></row>
-      <row><label>Select</label><select id="select" required><option value="" selected>Option 1</option><option>Option 2</option></select></row>
+      <row><label>Select</label><select id="select" required>
+          <option value="" selected>Option 1</option>
+          <option>Option 2</option>
+        </select></row>
       <row><label>Date</label><input type="date" id="date"></row>
       <row><label>Time</label><input type="time" id="time"></row>
       <row><label>File</label><input type="file" id="file"></row>
@@ -59,14 +64,14 @@
       <row><label>Color Picker</label><input type="color" id="color" value="#0eaaaa"></row>
       <row>
         <label>Gender</label>
-        <fieldset> 
+        <fieldset>
           <label><input type="radio" name="size" value="s">Male</label>
           <label><input type="radio" name="size" value="m" checked>Female</label>
         </fieldset>
       </row>
       <row>
         <label>Hobbit</label>
-        <fieldset> 
+        <fieldset>
           <label><input type="checkbox" name="size" value="a">Art</label>
           <label><input type="checkbox" name="size" value="c" checked>Code</label>
         </fieldset>
@@ -77,4 +82,5 @@
     </form>
   </main>
 </body>
+
 </html>
