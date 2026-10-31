@@ -1,6 +1,5 @@
 :root {
     --mc: #2196F3;
-    accent-color: var(--mc);
     color-scheme: light dark;
 }
 
