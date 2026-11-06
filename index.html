@@ -27,26 +27,22 @@
       }
     }
 
-    form {
+    row {
       display: grid;
       grid-template-columns: 1fr 2fr;
       column-gap: 16px;
-      row-gap: 8px;
+      margin-bottom: 8px;
       align-items: center;
     }
 
-    form>row {
-      display: contents;
-    }
-
-    form>row>label,
-    form>row>input,
-    form>row>select {
+    row>label,
+    row>input,
+    row>select {
       min-width: 0;
       box-sizing: border-box;
     }
 
-    form>row>label {
+    row>label {
       display: grid;
       grid-auto-flow: column;
       justify-content: end;
@@ -57,9 +53,9 @@
 
 <body>
   <main>
-    <details name="example" open>
-      <summary>Form Elements</summary>
-      <form class="pure-form pure-form-aligned">
+    <form>
+      <details name="example" open>
+        <summary>Form Elements</summary>
         <row><label>Text</label><input type="text" id="text" placeholder="Text"></row>
         <row><label>Select</label><select id="select" required>
             <option value="" selected>Option 1</option>
@@ -120,21 +116,23 @@
           </fieldset>
         </row>
         <row><label>Switch</label><input type="checkbox" id="switch-1" role="switch" checked></row>
-      </form>
-    </details>
+      </details>
 
-    <hr />
+      <hr />
 
-    <details name="example" open>
-      <summary>Graph</summary>
-      <form class="pure-form pure-form-aligned">
-        <row><label></label><p>Flamingos are known for their bright pink feathers and distinctive long necks. These birds are social creatures that live in large groups, and a group of flamingos is called a flamboyance. They can often be seen standing on one leg, which helps them conserve body heat.</p></row>
-      </form>
-    </details>
+      <details name="example" open>
+        <summary>Graph</summary>
+        <row><label></label>
+          <p>Flamingos are known for their bright pink feathers and distinctive long necks. These birds are social
+            creatures that live in large groups, and a group of flamingos is called a flamboyance. They can often be
+            seen standing on one leg, which helps them conserve body heat.</p>
+        </row>
+      </details>
 
-    <hr />
+      <hr />
       <row><label></label><input type="reset" value="Default"></row>
       <row><label></label><input type="submit" value="Submit"></row>
+    </form>
   </main>
 </body>
 
