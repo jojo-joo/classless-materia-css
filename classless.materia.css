@@ -50,7 +50,6 @@ input:is([type=checkbox], [type=radio]):not([role=switch]) {
     background: transparent no-repeat center;
     vertical-align: middle;
     cursor: pointer;
-    transition: background-color .2s, border-color .2s;
 
     &:checked {
         border-color: var(--mc);
@@ -59,7 +58,7 @@ input:is([type=checkbox], [type=radio]):not([role=switch]) {
         background-size: .75em;
     }
 
-    &:indeterminate {
+    &[type=checkbox]:indeterminate {
         border-color: var(--mc);
         background-color: var(--mc);
         background-image: linear-gradient(#fff, #fff);
@@ -174,4 +173,43 @@ input[type=reset] {
         background: var(--mc);
         &::before { transform: translateX(20px); }
     }
+}
+
+/* Accordion */
+summary {
+    line-height: 1rem;
+    list-style: none;
+    cursor: pointer;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary::after {
+    content: "";
+    float: right;
+    width: 1rem;
+    height: 1rem;
+    margin-inline-start: .5rem;
+    transform: rotate(-90deg);
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238891a4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") right center / 1rem no-repeat;
+}
+
+details[open] > summary {
+    margin-bottom: 1rem;
+    color: var(--mc-outline);
+}
+
+details[open] > summary::after { transform: rotate(0); }
+
+summary:focus-visible {
+    outline: 2px solid var(--mc);
+    outline-offset: 2px;
+}
+
+/* Divider */
+hr {
+    height: 0;
+    margin: 1rem 0;
+    border: 0;
+    border-top: 1px solid light-dark(#0000001f, #ffffff1f);
 }
